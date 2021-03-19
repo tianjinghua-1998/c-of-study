@@ -91,11 +91,7 @@ private:
 //	Test tmp(value);
 //	return tmp;
 //}
-//Test fun(Test &x)
-//{
-//	int value = x.GetData();
-//	return Test(value);//创建临时对象的语法
-//}
+
 //Test fun(const Test &x)
 //{
 //	int value = x.GetData();
@@ -103,11 +99,13 @@ private:
 //	return tmp;//创建临时对象的语法
 //}
 //不能以引用返回的
-Test fun(const Test &x)
-{
-	int value = x.GetData();
-	return Test(value);
-}
+
+//Test fun(const Test &x)
+//{
+//	int value = x.GetData();
+//	return Test(value);
+//}
+#ifdef T
 int main()
 {
 	//Test t1(10);
@@ -136,5 +134,23 @@ int main()
 	const Test t(100);
 	//pt可以指向任何空间，而t为常对象.
 	const Test *pt = &t;
+	return 0;
+}
+#endif
+//Test fun(Test x)
+//{
+//	int value = x.GetData();
+//	Test tmp(value);
+//	return tmp;
+//}
+Test fun(Test x)
+{
+	int value = x.GetData();
+	return Test(value);
+}
+int main()
+{
+	Test t1;
+	Test t2=fun(fun(t1));
 	return 0;
 }
