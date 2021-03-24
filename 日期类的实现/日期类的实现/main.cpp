@@ -258,14 +258,6 @@ int main()
 {
 	Date t1, t2(2000, 2, 23);
 	//int x1, y1, z1, x2, y2, z2;
-	operator<<(cout, t1) << t2;
-	//while (1)
-	//{
-	//	//cin >> t1 >> t2;
-	//	//cout << "t1=" << t1;
-	//	//cout << "t2=" << t2;
-	//	
-	//}
 	//Date t2 = t1 + 200;
 	//Date t2 = t1 + 200;
 	//cin >> x2 >> y2 >> z2;
