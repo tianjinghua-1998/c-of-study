@@ -7,27 +7,27 @@ namespace tianjinghua
 {
 	template <class T> class list; //前置声明一下;
 	template <typename T, typename Ref, typename Ptr> class list_iterator;
-	//template <typename T>
-	//class Node
-	//{
-	//	friend class list<T>;
-	//	friend class list_iterator<T,T&,T*>;
-	//public:
-	//	//Node() :_prev(nullptr),_next(nullptr),_value(T()) {}
-	//	Node(Node* prev = nullptr, Node* next = nullptr, const T &val = T()) :_prev(prev), _next(next), _value(val){}
-	//private:
-	//	Node<T>* _prev;
-	//	Node<T>* _next;
-	//	T _value;
-	//};
-	template<class T>
+	template <typename T>
+	class Node
+	{
+		friend class list<T>;
+		friend class list_iterator<T,T&,T*>;
+	public:
+		//Node() :_prev(nullptr),_next(nullptr),_value(T()) {}
+		Node(Node* prev = nullptr, Node* next = nullptr, const T &val = T()) :_prev(prev), _next(next), _value(val){}
+	private:
+		Node<T>* _prev;
+		Node<T>* _next;
+		T _value;
+	};
+	/*template<class T>
 	struct Node
 	{
 		Node(Node* prev = nullptr, Node* next = nullptr, const T &val = T()) :_prev(prev), _next(next), _value(val){}
 		Node* _prev;
 		Node* _next;
 		T _value;
-	};
+	};*/
 	template <class T>
 	class list
 	{
@@ -269,27 +269,28 @@ namespace tianjinghua
 //	}
 //	return 0;
 //}
-//int main()
-//{
-//	/*tianjinghua::list <int> mylist(10, 2);
-//	auto it = mylist.begin();
-//	while (it != mylist.end())
-//	{
-//		cout << *it<<" "; 
-//		it++;
-//	}*/
-//	int arr[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-//	size_t sz = sizeof(arr) / sizeof(arr[0]);
-//	tianjinghua::list<int> mylist(arr, arr + 10);
-//	auto it = mylist.begin();
-//	while (it != mylist.end())
-//	{
-//		cout << *it << " ";
-//		it++;
-//	}
-//	cout << endl;	
-//	return 0;
-//}
+int main()
+{
+	tianjinghua::list <int> mylist(10, 2);
+	auto it = mylist.begin();
+	while (it != mylist.end())
+	{
+		cout << *it<<" "; 
+		it++;
+	}
+	cout << endl;
+	/*int arr[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	size_t sz = sizeof(arr) / sizeof(arr[0]);
+	tianjinghua::list<int> mylist(arr, arr + 10);
+	auto it = mylist.begin();
+	while (it != mylist.end())
+	{
+		cout << *it << " ";
+		it++;
+	}
+	cout << endl;*/	
+	return 0;
+}
 //int main()
 //{
 //	tianjinghua::list<int> mylist;
@@ -357,16 +358,16 @@ namespace tianjinghua
 //		cout << "两者不相等" << endl;
 //	return 0;
 //}
-#include <list>
-int main()
-{
-	int ar[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-	int n = sizeof(ar) / sizeof(int);
-	list<int> mylist(ar, ar + n);
-	list<int>::iterator pos = find(mylist.begin(), mylist.end(), 5);
-	reverse(mylist.begin(), pos);
-	reverse(pos, mylist.end());
-	for (auto & e :mylist)
-		cout << e << " ";
-	cout << endl;
-}
+//#include <list>
+//int main()
+//{
+//	int ar[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+//	int n = sizeof(ar) / sizeof(int);
+//	list<int> mylist(ar, ar + n);
+//	list<int>::iterator pos = find(mylist.begin(), mylist.end(), 5);
+//	reverse(mylist.begin(), pos);
+//	reverse(pos, mylist.end());
+//	for (auto & e :mylist)
+//		cout << e << " ";
+//	cout << endl;
+//}
