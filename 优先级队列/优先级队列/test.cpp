@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 
 #include <iostream>
-#include <queue>
+#include <vector>
 using namespace std;
 #include <functional>
 namespace bit
@@ -84,38 +84,63 @@ namespace bit
 			int j = start;
 			//父结点
 			int i = (j - 1) / 2;
-
+			T tmp = c[j];
 			while (j > 0)
 			{
 				//当父节点小于子节点的时候，进行交换
-				if (comp(c[i],c[j]))
+				if (comp(c[i],tmp))
 				{
-					T tmp = c[i];
-					c[i] = c[j];
-					c[j] = tmp;
+					c[j] = c[i];
 					j = i;
 					i = (j - 1) / 2;
 				}
 				else
 					break;
 			}
+			c[j] = tmp;
 		}
 	private:
 		Container c;
 		Compare comp;
 	};
 };
+class test
+{
+public:
+	test(int x = 4,int y = 5):a(x),b(y)
+	{
+		cout << "create obj" << this << endl;
+	}
+	test(const test& T)
+	{
+		a = T.a;
+		b = T.b;
+		cout << "copy obj" << this << endl;
+	}
+	~test()
+	{
+		cout << "delete obj" << this << endl;
+	}
+private:
+	int a;
+	int b;
+};
+//void main()
+//{
+//	//a2就是该无名对象
+//	test a2 = test();
+//}
 void main()
 {
-	int ar[] = { 53, 17, 78, 9, 45,30};
-	int n = sizeof(ar) / sizeof(ar[0]);
+	int arr[] = { 3, 2, 3, 1, 2, 4, 5, 5, 6, 7, 7, 8, 2, 3, 1, 1, 1, 10, 11, 5, 6, 2, 4, 7, 8, 5, 6 };
+	int n = sizeof(arr) / sizeof(arr[0]);
 	/*bit::priority_queue<int, vector<int>, greater<int>>
 		pq(ar, ar + n, greater<int>());*/
-	bit::priority_queue<int, vector<int>> pq(ar, ar + n);
+	bit::priority_queue<int, vector<int>> pq(arr, arr + n);
 	//bit::priority_queue<int> pq(ar, ar+n);
 	//pq.pop();
 	//bit::priority_queue<int> pq;
-	//pq.push(50);
+	//pq.push(80);
 	//pq.pop();
 	pq.Show();
 }
